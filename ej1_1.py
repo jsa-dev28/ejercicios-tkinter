@@ -4,9 +4,9 @@ import math
 
 class Calculadora(ttk.Frame):
     def __init__(self, parent):
-        super().__init__(parent)          
+        super().__init__(parent)
         self.pack(expand=True, fill="both")
-        self.expresion = ""                 
+        self.expresion = ""
         self.var_pantalla = tk.StringVar()
         self.construir_pantalla()
         self.construir_botones()
@@ -16,10 +16,10 @@ class Calculadora(ttk.Frame):
         frame_pantalla.pack(fill="x")
         pantalla = ttk.Entry(
             frame_pantalla,
-            textvariable=self.var_pantalla,  
+            textvariable=self.var_pantalla,
             font=("Arial", 24),
             justify="right",
-            state="readonly"                 
+            state="readonly"
         )
         pantalla.pack(fill="x", ipady=10)
 
@@ -53,7 +53,7 @@ class Calculadora(ttk.Frame):
     def presionar(self, simbolo):
         if simbolo == "C":
             self.expresion = ""
-            self.var_pantalla.set("")          
+            self.var_pantalla.set("")
         elif simbolo == "⌫":
             self.expresion = self.expresion[:-1]
             self.var_pantalla.set(self.expresion)
@@ -67,7 +67,7 @@ class Calculadora(ttk.Frame):
 
     def calcular(self):
         try:
-            resultado = eval(self.expresion)   
+            resultado = eval(self.expresion)
             self.expresion = str(resultado)
             self.var_pantalla.set(self.expresion)
         except ZeroDivisionError:
@@ -94,7 +94,5 @@ if __name__ == "__main__":
     root.title("Calculadora")
     root.geometry("320x420")
     root.resizable(True, True)
-    
     app = Calculadora(root)
-    
-    root.mainloop() 
+    root.mainloop()
